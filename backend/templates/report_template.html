@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Report</title>
+</head>
+<body>
+    <h1>Report for {{ data[0]['User'] }}</h1>
+    <p>Details:</p>
+    <ul>
+        {% for item in data %}
+            <li>{{ item.detail }}</li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
+

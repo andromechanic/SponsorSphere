@@ -1,0 +1,4 @@
+celery -A app:celery_app worker --loglevel INFO
+celery -A app.celery_app beat --max-interval 1 -l info
+source env/bin/activate
+celery -A app:celery_app inspect registered

@@ -1,0 +1,9 @@
+Flask
+Flask-RESTful
+Flask-JWT-Extended
+Flask-Cors
+Celery
+WeasyPrint
+flask_sqlalchemy
+flask_caching
+redis

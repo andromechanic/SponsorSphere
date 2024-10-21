@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reminder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            padding: 20px;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #555;
+        }
+        img.logo {
+            max-width: 150px;
+            margin-bottom: 20px;
+        }
+        .pending-requests {
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #e9f5ff;
+            border-left: 4px solid #2196F3;
+        }
+        .request {
+            margin-bottom: 10px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <img src="http://localhost:5000/static/profile_pics/SS logo.jpg" alt="SponsorSphere Logo" class="logo">
+        <h1>Hello {{ user.UserName }}</h1>
+        <p>This is a friendly reminder to check your dashboard for any pending ad requests or to explore new public ad requests.</p>
+        <p>We value your participation and want to ensure you don't miss any opportunities!</p>
+
+        <div class="pending-requests">
+            <h2>Pending Ad Requests:</h2>
+            {% if pending_requests %}
+                {% for request in pending_requests %}
+                <div class="request">
+                    <strong>Request ID:</strong> {{ request.RequestID }}<br>
+                    <strong>Campaign:</strong> {{ request.campaign.Title }}<br>
+                    <strong>Proposed Amount:</strong> {{ request.ProposedAmount }}<br>
+                    <strong>Status:</strong> {{ request.Status }}<br>
+                    <p>Click <a href="http://localhost:5000/requests/{{ request.RequestID }}">here</a> to view more details.</p>
+                </div>
+                {% endfor %}
+            {% else %}
+                <p>You have no pending ad requests at the moment. Keep up the great work!</p>
+            {% endif %}
+        </div>
+
+        <p>Best regards,<br>Sponsor Sphere</p>
+    </div>
+</body>
+</html>
